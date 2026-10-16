@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.cred
+.cred*
+.env
+.env.local
+.env.*.local
+*.db
+*.db-journal
+prisma/*.db
+prisma/*.db-journal
+public/uploads/
+*.tsbuildinfo
+

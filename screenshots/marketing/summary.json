@@ -1,0 +1,549 @@
+[
+  {
+    "name": "01-home",
+    "url": "https://chroniclehq.com/",
+    "finalUrl": "https://chroniclehq.com/",
+    "title": "Chronicle: AI Presentation Maker for Professional Slides & AI PPT",
+    "h1": [
+      "Credible decks at the speed of AI",
+      "Built for serious business.",
+      "Hundreds of templates bythe world’s top designers",
+      "Your reputation is on the slide."
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "02-ai-presentation-maker",
+    "url": "https://chroniclehq.com/ai-presentation-maker",
+    "finalUrl": "https://chroniclehq.com/ai-presentation-maker",
+    "title": "AI Presentation Maker: Create Professional Slides in Minutes | Chronicle",
+    "h1": [
+      "Go from idea to presentation in minutes",
+      "How to Create a Presentation with AI in Seconds",
+      "Key Features of Chronicle’s AI Presentation Maker"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "03-api",
+    "url": "https://chroniclehq.com/api",
+    "finalUrl": "https://chroniclehq.com/api",
+    "title": "Chronicle API – Give your AI agents presentation superpowers",
+    "h1": [
+      "The presentation layer for AI agents."
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "04-integrations",
+    "url": "https://chroniclehq.com/integrations",
+    "finalUrl": "https://chroniclehq.com/integrations",
+    "title": "Integrations - Chronicle",
+    "h1": [
+      "Chronicle integrations"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "05-gallery",
+    "url": "https://chroniclehq.com/gallery",
+    "finalUrl": "https://chroniclehq.com/gallery",
+    "title": "Gallery - Chronicle",
+    "h1": [
+      "The world’s most beautiful decks"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "06-academy",
+    "url": "https://chroniclehq.com/academy",
+    "finalUrl": "https://chroniclehq.com/academy",
+    "title": "Academy - Chronicle",
+    "h1": [],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "07-blog",
+    "url": "https://chroniclehq.com/blog",
+    "finalUrl": "https://chroniclehq.com/blog",
+    "title": "Blog - Chronicle",
+    "h1": [
+      "Blog"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "08-solutions",
+    "url": "https://chroniclehq.com/solutions",
+    "finalUrl": "https://chroniclehq.com/solutions",
+    "title": "Solutions - Chronicle",
+    "h1": [
+      "Discover the best presentation solution for your team"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "09-sales",
+    "url": "https://chroniclehq.com/sales",
+    "finalUrl": "https://chroniclehq.com/sales",
+    "title": "AI Presentation Maker for Sales Teams | Chronicle",
+    "h1": [
+      "Close more deals with on‑brand sales decks, fast",
+      "Sales decks that win deals.",
+      "Sales proposals & projections in minutes",
+      "Sales enablement, simplified",
+      "Personalization at scale",
+      "Why sales teams love Chronicle"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "10-product-use-case",
+    "url": "https://chroniclehq.com/product-use-case",
+    "finalUrl": "https://chroniclehq.com/product-use-case",
+    "title": "AI Presentation Maker for Product Teams | Chronicle",
+    "h1": [
+      "Turn product ideas into presentations that align teams",
+      "Roadmaps that tell a story",
+      "Product updates that inspire confidence",
+      "Clear, consistent stakeholder updates",
+      "Adapt for any audience",
+      "Why product teams love Chronicle"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "11-marketing-use-case",
+    "url": "https://chroniclehq.com/marketing",
+    "finalUrl": "https://chroniclehq.com/marketing",
+    "title": "AI Presentation Maker for Marketing Teams | Chronicle",
+    "h1": [
+      "Bring your marketing ideas to life, beautifully",
+      "Campaign decks that sell the vision",
+      "Consistent, on-brand marketing collateral",
+      "Marketing strategy & reporting made easy",
+      "Personalize for every audience",
+      "Why marketers choose Chronicle"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "12-agencies",
+    "url": "https://chroniclehq.com/agencies",
+    "finalUrl": "https://chroniclehq.com/agencies",
+    "title": "",
+    "h1": [
+      "Page not found"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "13-startups",
+    "url": "https://chroniclehq.com/startups",
+    "finalUrl": "https://chroniclehq.com/startups",
+    "title": "AI Presentation Maker for Startups | Chronicle",
+    "h1": [
+      "Move at startup speed, without losing the polish",
+      "Pitch, launch, and align all in one place.",
+      "Fundraising pitch decks that stand out",
+      "Go-to-market & sales decks",
+      "Meetings & internal syncs",
+      "Why startups choose Chronicle"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "14-templates",
+    "url": "https://chroniclehq.com/templates",
+    "finalUrl": "https://chroniclehq.com/templates",
+    "title": "Presentation Slide Templates: AI-Powered Designs | Chronicle",
+    "h1": [
+      "Presentation Templates"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "15-template-board-meeting",
+    "url": "https://chroniclehq.com/templates/board-meeting-deck",
+    "finalUrl": "https://chroniclehq.com/templates/board-meeting-deck",
+    "title": "",
+    "h1": [
+      "Page not found"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "16-enterprise",
+    "url": "https://chroniclehq.com/enterprise",
+    "finalUrl": "https://chroniclehq.com/enterprise",
+    "title": "Enterprise AI Presentation Software | Chronicle for Teams",
+    "h1": [
+      "AI presentations that scales across teams",
+      "Built for every single team"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "17-pricing",
+    "url": "https://chroniclehq.com/pricing",
+    "finalUrl": "https://chroniclehq.com/pricing",
+    "title": "Pricing - Chronicle",
+    "h1": [
+      "Pricing"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "18-chronicle-vs-gamma",
+    "url": "https://chroniclehq.com/chronicle-vs-gamma",
+    "finalUrl": "https://chroniclehq.com/chronicle-vs-gamma",
+    "title": "",
+    "h1": [
+      "Page not found"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "19-chronicle-vs-pitch",
+    "url": "https://chroniclehq.com/chronicle-vs-pitch",
+    "finalUrl": "https://chroniclehq.com/chronicle-vs-pitch",
+    "title": "",
+    "h1": [
+      "Page not found"
+    ],
+    "navLinks": [
+      "Product",
+      "Resources",
+      "Solutions",
+      "Templates",
+      "Enterprise",
+      "Pricing",
+      "Try for free",
+      "Login",
+      "Try for free\nTry for free",
+      "Getting Started",
+      "Chronicle API + MCP",
+      "Templates",
+      "Integrations",
+      "Solutions",
+      "Pricing"
+    ]
+  },
+  {
+    "name": "20-docs-introduction",
+    "url": "https://docs.chroniclehq.com/introduction",
+    "finalUrl": "https://docs.chroniclehq.com/introduction",
+    "title": "Page Not Found",
+    "h1": [
+      "Documentation Index",
+      "Page Not Found"
+    ],
+    "navLinks": [
+      "Chronicle Developer Docs home page",
+      "Support",
+      "Go to Chronicle",
+      "Chronicle Developer Docs home page",
+      "Support",
+      "Go to Chronicle",
+      "Go to Chronicle"
+    ]
+  },
+  {
+    "name": "21-auth-login",
+    "url": "https://app.chroniclehq.com/login",
+    "finalUrl": "https://login.chroniclehq.com/?client_id=client_01KPACWZGEQ056J4MVR6WGTBHS&redirect_uri=https%3A%2F%2Fapp.chroniclehq.com%2FloginCallback&state=%7B%22redirectUrl%22%3A%22%2Flogin%22%7D&authorization_session_id=01M521DG8AQ27TJ0TT7GQBP1QH",
+    "title": "Sign in",
+    "h1": [
+      "Log in to your Chronicle account"
+    ],
+    "navLinks": []
+  }
+]
