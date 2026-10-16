@@ -444,6 +444,7 @@ export function SlideEditorStudio({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          documentId,
           action,
           prompt: customPrompt ?? musePrompt,
           slide: activeSlide
@@ -457,6 +458,28 @@ export function SlideEditorStudio({
       }
     } finally {
       setMuseLoading(false);
+    }
+  }
+
+  async function handleServerExport(format: "pdf" | "png") {
+    setExportOpen(false);
+    setSaveStatus("saving");
+    try {
+      const res = await fetch(`/api/documents/${documentId}/export`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ format })
+      });
+      const data = await res.json();
+      if (data.fileUrl) {
+        const a = document.createElement("a");
+        a.href = data.fileUrl;
+        a.download = data.fileName || `chronicle-deck.${format}`;
+        a.target = "_blank";
+        a.click();
+      }
+    } finally {
+      setSaveStatus("saved");
     }
   }
 
@@ -579,14 +602,18 @@ export function SlideEditorStudio({
               {exportOpen && (
                 <div className="absolute right-0 top-full mt-2 w-64 rounded-2xl bg-[#151521] border border-white/15 shadow-2xl p-2 z-50 space-y-1 text-xs">
                   <button
-                    onClick={() => {
-                      setExportOpen(false);
-                      window.print();
-                    }}
+                    onClick={() => handleServerExport("pdf")}
                     className="w-full p-2.5 rounded-xl hover:bg-white/5 text-left flex items-center justify-between text-white"
                   >
-                    <span>Export as PDF (Print Ready)</span>
-                    <span className="text-[10px] text-zinc-400">16:9</span>
+                    <span>Export as PDF (16:9 Render)</span>
+                    <span className="text-[10px] text-emerald-300">PDF</span>
+                  </button>
+                  <button
+                    onClick={() => handleServerExport("png")}
+                    className="w-full p-2.5 rounded-xl hover:bg-white/5 text-left flex items-center justify-between text-white"
+                  >
+                    <span>Export Slide as High-Res PNG</span>
+                    <span className="text-[10px] text-sky-300">1920×1080</span>
                   </button>
                   <button
                     onClick={handleExportJson}

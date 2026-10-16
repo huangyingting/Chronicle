@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { DEFAULT_WORKSPACE_ID } from "@/lib/seed-data";
+import { crawlWebsiteBrandKit } from "@/lib/production-engine/live-crawler";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -24,7 +25,9 @@ export async function GET(req: NextRequest) {
       return {
         ...bk,
         domain: `${bk.name.toLowerCase().replace(/\s+/g, "")}.com`,
-        logoLightUrl: logos[0]?.url || `https://www.google.com/s2/favicons?domain=${bk.name.toLowerCase()}.com&sz=128`,
+        logoLightUrl:
+          logos[0]?.url ||
+          `https://www.google.com/s2/favicons?domain=${bk.name.toLowerCase()}.com&sz=128`,
         colors: JSON.parse(bk.colorsJson || "[]"),
         fonts: JSON.parse(bk.fontsJson || "{}")
       };
@@ -49,35 +52,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ customFont: font });
   }
 
-  const domain = (body.domain || "acme.com")
-    .replace(/^https?:\/\//, "")
-    .replace(/\/.*$/, "");
-  const name =
-    body.name ||
-    domain.split(".")[0].replace(/^\w/, (c: string) => c.toUpperCase());
+  const rawDomain = body.domain || "chroniclehq.com";
+  const crawled = await crawlWebsiteBrandKit(
+    rawDomain,
+    body.primaryColor || "#8B5CF6",
+    body.secondaryColor || "#3B82F6"
+  );
 
-  const logoUrl =
-    body.logoLightUrl ||
-    `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+  const name = body.name || crawled.name;
+  const logoUrl = body.logoLightUrl || crawled.logoUrl;
 
   const brandKit = await prisma.brandKit.create({
     data: {
       workspaceId: body.workspaceId || DEFAULT_WORKSPACE_ID,
       name,
       isDefault: false,
-      logosJson: JSON.stringify([{ name: "Primary Logo", url: logoUrl }]),
+      logosJson: JSON.stringify([
+        { name: "Primary Logo", url: logoUrl },
+        ...(crawled.screenshotUrl
+          ? [{ name: "Website Snapshot", url: crawled.screenshotUrl }]
+          : [])
+      ]),
       themesJson: JSON.stringify([]),
-      colorsJson: JSON.stringify(
-        body.colors || [
-          { name: "Primary", hex: body.primaryColor || "#8B5CF6" },
-          { name: "Secondary", hex: body.secondaryColor || "#3B82F6" },
-          { name: "Surface Dark", hex: "#0B0B10" },
-          { name: "Surface Light", hex: "#F8FAFC" }
-        ]
-      ),
+      colorsJson: JSON.stringify(body.colors || crawled.colors),
       fontsJson: JSON.stringify({
-        heading: body.headingFont || "Labil Grotesk",
-        body: body.bodyFont || "Inter"
+        heading: body.headingFont || crawled.fonts.heading || "Labil Grotesk",
+        body: body.bodyFont || crawled.fonts.body || "Inter"
       })
     }
   });
@@ -85,8 +85,10 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({
     brandKit: {
       ...brandKit,
-      domain,
+      domain: crawled.domain,
       logoLightUrl: logoUrl,
+      screenshotUrl: crawled.screenshotUrl,
+      crawledLive: crawled.crawledLive,
       colors: JSON.parse(brandKit.colorsJson),
       fonts: JSON.parse(brandKit.fontsJson)
     }

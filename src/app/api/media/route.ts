@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { DEFAULT_USER_ID, DEFAULT_WORKSPACE_ID } from "@/lib/seed-data";
+import { DEFAULT_WORKSPACE_ID } from "@/lib/seed-data";
+import { generateSlideVisualImage } from "@/lib/production-engine/ai-provider";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -29,17 +30,43 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const workspaceId = body.workspaceId || DEFAULT_WORKSPACE_ID;
 
-  const stockPool = [
-    "https://qusmdshfvwgcppaiykvd.supabase.co/storage/v1/object/public/chr-v3-prd-user-image-uploads/defaults/image-5.jpg",
-    "https://qusmdshfvwgcppaiykvd.supabase.co/storage/v1/object/public/chr-v3-prd-user-image-uploads/defaults/image-2.jpg",
-    "https://qusmdshfvwgcppaiykvd.supabase.co/storage/v1/object/public/chr-v3-prd-user-image-uploads/defaults/image-1.jpg",
-    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200&auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80"
-  ];
+  if (body.scope === "GENERATED" || body.action === "generate") {
+    const prompt = (
+      body.prompt ||
+      body.name?.replace(/\.(jpg|png|webp)$/i, "") ||
+      "Executive 16:9 presentation visual"
+    ).trim();
+
+    const generated = await generateSlideVisualImage(prompt);
+    const asset = await prisma.mediaAsset.create({
+      data: {
+        workspaceId,
+        fileName: body.name || generated.fileName,
+        url: generated.url,
+        type: "IMAGE",
+        source: "GENERATED",
+        mediaAccess: "GENERATED",
+        colors: JSON.stringify(generated.colors),
+        dimensions: JSON.stringify({ width: 1920, height: 1080 })
+      }
+    });
+
+    return NextResponse.json({
+      asset: {
+        ...asset,
+        name: asset.fileName,
+        scope: asset.mediaAccess,
+        width: 1920,
+        height: 1080,
+        aiProvider: generated.provider,
+        aiModel: generated.model
+      }
+    });
+  }
 
   const pickedUrl =
-    body.url || stockPool[Math.floor(Math.random() * stockPool.length)];
+    body.url ||
+    "https://qusmdshfvwgcppaiykvd.supabase.co/storage/v1/object/public/chr-v3-prd-user-image-uploads/defaults/image-5.jpg";
 
   const asset = await prisma.mediaAsset.create({
     data: {
@@ -47,7 +74,7 @@ export async function POST(req: NextRequest) {
       fileName: (body.name || body.prompt || "Visual Asset.jpg").trim(),
       url: pickedUrl,
       type: "IMAGE",
-      source: body.scope === "GENERATED" ? "AI" : "UPLOAD",
+      source: "UPLOAD",
       mediaAccess: body.scope || "WORKSPACE"
     }
   });

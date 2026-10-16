@@ -6,6 +6,8 @@ import {
   generateSlidesFromOutline,
   generateStorylineOutline
 } from "@/lib/seed-data";
+import { callAzureOpenAiJson } from "@/lib/production-engine/ai-provider";
+import { SlideSection } from "@/lib/types";
 
 export async function GET() {
   const docs = await prisma.document.findMany({
@@ -36,13 +38,62 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  const authHeader = req.headers.get("authorization") || "";
+  if (authHeader.toLowerCase().startsWith("bearer ")) {
+    const token = authHeader.slice(7).trim();
+    if (token) {
+      const keyRecord = await prisma.apiKey
+        .findFirst({
+          where: { rawKeyHash: token, revokedAt: null }
+        })
+        .catch(() => null);
+      if (keyRecord) {
+        await prisma.apiKey
+          .update({
+            where: { id: keyRecord.id },
+            data: { lastUsedAt: new Date() }
+          })
+          .catch(() => null);
+      }
+    }
+  }
+
   const body = await req.json();
   const prompt = (body.prompt || body.topic || "Executive Strategy Deck").trim();
-  const slideCount = Number(body.slide_count || body.slideCount || 6);
-  const workspaceId = body.workspace_id || body.workspaceId || DEFAULT_WORKSPACE_ID;
+  const slideCount = Math.min(
+    12,
+    Math.max(3, Number(body.slide_count || body.slideCount || 6))
+  );
+  const workspaceId =
+    body.workspace_id || body.workspaceId || DEFAULT_WORKSPACE_ID;
 
-  const outline = generateStorylineOutline(prompt, slideCount, body.tone || "Executive");
-  const slides = generateSlidesFromOutline(prompt, outline);
+  const outline = generateStorylineOutline(
+    prompt,
+    slideCount,
+    body.tone || "Executive"
+  );
+  const fallbackSlides = generateSlidesFromOutline(prompt, outline);
+
+  const aiDeck = await callAzureOpenAiJson<{
+    slides: SlideSection[];
+  }>(
+    `You are Chronicle REST/MCP API Engine. Generate ${slideCount} 16:9 presentation slides in JSON {"slides": [...]} for the topic "${prompt}". Each slide must include id, title, sectionGroup, eyebrow, subtitle, layoutVariant, background, and 3-4 widgets (heading, metric, box, comparison-table, timeline, or bar-chart).`,
+    JSON.stringify({ prompt, slideCount, tone: body.tone || "Executive" }),
+    { slides: fallbackSlides }
+  );
+
+  const slides =
+    Array.isArray(aiDeck.data.slides) && aiDeck.data.slides.length > 0
+      ? aiDeck.data.slides.map((s, idx) => ({
+          ...fallbackSlides[idx % fallbackSlides.length],
+          ...s,
+          id: s.id || `s${idx + 1}`,
+          widgets:
+            Array.isArray(s.widgets) && s.widgets.length > 0
+              ? s.widgets
+              : fallbackSlides[idx % fallbackSlides.length].widgets
+        }))
+      : fallbackSlides;
 
   const doc = await prisma.document.create({
     data: {
@@ -66,6 +117,8 @@ export async function POST(req: NextRequest) {
     object: "deck",
     title: doc.title,
     slide_count: slides.length,
+    ai_provider: aiDeck.provider,
+    ai_model: aiDeck.model,
     workspace_id: workspaceId,
     editor_url: `/${workspaceId}/document/${doc.id}/${firstSlideId}`,
     share_url: `/share/${workspaceId}/${doc.id}/${firstSlideId}`,

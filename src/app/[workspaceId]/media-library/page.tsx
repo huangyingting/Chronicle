@@ -75,6 +75,20 @@ export default function MediaLibraryPage({
     await fetchAssets();
   }
 
+  async function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("workspaceId", workspaceId);
+    await fetch("/api/uploads", {
+      method: "POST",
+      body: formData
+    });
+    e.target.value = "";
+    await fetchAssets();
+  }
+
   async function handleDelete(id: string) {
     await fetch(`/api/media?id=${id}`, { method: "DELETE" });
     await fetchAssets();
@@ -169,8 +183,17 @@ export default function MediaLibraryPage({
                 type="submit"
                 className="px-4 py-2 rounded-xl bg-white text-black font-semibold text-xs"
               >
-                Upload
+                Upload URL
               </button>
+              <label className="px-3.5 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs cursor-pointer flex items-center">
+                File
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
+              </label>
             </div>
           </form>
         </div>
